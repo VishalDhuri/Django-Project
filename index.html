@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+</head>
+<body>
+        <button><a href="{% url 'index' %}" class="btn btn-outline-primary">Home</a></button>
+        <button><a href="{% url 'admin:index' %}" class="btn btn-outline-secondary">Admin</a></button>
+        <button><a href="{% url 'food' %}" class="btn btn-outline-success">Foods</a></button>
+        <button><a href="{% url 'user' %}" class="btn btn-outline-danger">User</a></button>
+        <button><a href="{% url 'uploaduser' %}" class="btn btn-outline-warning">Adduser</a></button>
+        <button><a href="{% url 'uploadfood' %}" class="btn btn-outline-info">Addfood</a></button>
+        <button><a href="{% url 'uploadreview' %}" class="btn btn-outline-warning">Addreview</a></button>
+        {% if request.user.is_authenticated %}
+        {% for i in data %}
+        <button><a href="{% url 'logout' %}" class="btn btn-outline-warning">Logout</a></button>
+        {%endfor%}
+        {% else %}
+        <button><a href="{% url 'login' %}" class="btn btn-outline-warning">Login</a></button>
+        {%endif%}
+        <br>
+        <hr>
+        <br>
+{% block content %}
+    <table  border='2' width='40%' class="table table-striped">
+        <tr align="center">
+            <th>ID</th>
+            <th>FoodName</th>
+            <th>ReviewerName</th>
+            <th>Rating</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {%for i in data%}
+        <tr align="center">
+            <td>{{i.id}}</td>
+            <td>{{i.food}}</td>
+            <td>{{i.reviewername}}</td>
+            <td>{{i.rating}}</td>
+            <td><a href="{%url 'editreview' i.id %}" class="btn btn-outline-primary">edit</a></td>
+            <td><a href="{% url 'deleteR' i.id %}" class="btn btn-outline-primary">delete</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+
+</div>
+
+    {%endblock%}
+</body>
+</html>

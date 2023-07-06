@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+</head>
+<body>
+    {% extends "index.html" %}
+    {% block content %}
+    
+    <table border="1" width="30%" class="table table-striped">
+        <tr align="center">
+        <th>FoodName</th>
+        <th>Foodprice</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for i in data %}
+    <tr align="center">
+        <td>{{i.foodname}}</td>
+        <td>{{i.foodprice}}</td>
+        <td><a href="{% url 'editfood' i.foodname %}" class="btn btn-outline-primary">edit</a></td>
+        <td><a href="{% url 'deletefood' i.foodname %}" class="btn btn-outline-primary">delete</a></td>
+    </tr>
+    {%endfor%}
+    </table>
+
+    {% endblock %}
+</body>
+</html>

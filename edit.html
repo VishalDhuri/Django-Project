@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        <table class="table table-striped">
+            {% for i in form1 %}
+            <tr>
+                <td>{{i.label}}</td>
+                <td>{{i}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+        <input type="submit" class="btn btn-outline-primary">
+    </form>
+</body>
+</html>

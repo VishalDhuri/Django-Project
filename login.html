@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Login your account</h1><br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {% for i in login %}
+            <tr>
+                <td>{{i.label}}</td>
+                <td>{{i}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+        <input type="submit" value="Login"class="btn btn-outline-primary">
+    </form>
+    <p>don't have an account <a href="/register" class="btn btn-outline-primary">Register</a></p>
+</body>
+</html>
